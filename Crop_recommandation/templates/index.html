@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Crop Prediction</h2>
+
+    <form action="{{ url_for('predict') }}" method="post">
+
+        <label>Nitrogen</label>
+        <input type="number" name="nitrogen" step="any" required>
+
+        <label>Phosphorus</label>
+        <input type="number" name="phosphorus" step="any" required>
+
+        <label>Potassium</label>
+        <input type="number" name="potassium" step="any" required>
+
+        <label>Temperature (°C)</label>
+        <input type="number" name="temperature" step="any" required>
+
+        <label>Humidity (%)</label>
+        <input type="number" name="humidity" step="any" required>
+
+        <label>pH</label>
+        <input type="number" name="ph" step="any" required>
+
+        <label>Rainfall (mm)</label>
+        <input type="number" name="rainfall" step="any" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+  {% if prediction_text %}
+    <h1 id="pridi">{{ prediction_text }}</h1>
+{% endif %}
+
+</div>
+
+</body>
+</html>
