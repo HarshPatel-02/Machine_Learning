@@ -1,9 +1,13 @@
 import numpy as np
 from flask import Flask, request, render_template
 import pickle
+import os 
 
 flask_app = Flask(__name__)
-model = pickle.load(open("crop_model.pkl", "rb"))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "crop_model.pkl")
+model = pickle.load(open(model_path, "rb"))
 
 @flask_app.route("/")
 def Home():
